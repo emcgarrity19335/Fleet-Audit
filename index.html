@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Vehicle Inspection — Top Tier Solar Solutions</title>
+<link rel="stylesheet" href="./index_files/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f4f5f7;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    background: #fff;
+    border-bottom: 1px solid #e2e4e9;
+  }
+
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 24px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .header-icon {
+    width: 48px;
+    height: 48px;
+    background: #e6f1fb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .header-icon i { font-size: 24px; color: #185fa5; }
+
+  .header-text h1 { font-size: 20px; font-weight: 600; color: #111; margin-bottom: 4px; }
+  .header-text p { font-size: 13px; color: #666; line-height: 1.5; }
+
+  .progress-strip {
+    background: #fff;
+    border-bottom: 1px solid #e2e4e9;
+    padding: 10px 24px 12px;
+  }
+  .progress-strip-inner { max-width: 720px; margin: 0 auto; }
+  .progress-bar-bg { height: 5px; background: #e8eaed; border-radius: 99px; overflow: hidden; margin-bottom: 5px; }
+  .progress-bar-fill { height: 100%; background: #185fa5; border-radius: 99px; transition: width 0.3s ease; width: 0%; }
+  .progress-label { font-size: 12px; color: #888; }
+
+  .form-body { max-width: 720px; margin: 0 auto; padding: 24px; }
+
+  .meta-card {
+    background: #fff;
+    border: 1px solid #e2e4e9;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 28px;
+  }
+
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .field label .req { color: #d85a30; }
+
+  .field input, .field select {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #d4d7de;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #111;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field input:focus, .field select:focus {
+    border-color: #185fa5;
+    box-shadow: 0 0 0 3px rgba(24,95,165,0.12);
+  }
+
+  .section-heading {
+    font-size: 11px;
+    font-weight: 600;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8eaed;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .photo-card {
+    background: #fff;
+    border: 1px solid #e2e4e9;
+    border-radius: 12px;
+    padding: 14px;
+    transition: border-color 0.2s;
+  }
+  .photo-card.has-photo { border-color: #185fa5; }
+
+  .card-top { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
+  .card-top i { font-size: 17px; color: #185fa5; }
+  .card-title { font-size: 13px; font-weight: 600; color: #111; flex: 1; }
+
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ddd; flex-shrink: 0; transition: background 0.2s;
+  }
+  .photo-card.has-photo .status-dot { background: #1d9e75; }
+
+  .card-desc { font-size: 12px; color: #777; line-height: 1.5; margin-bottom: 10px; }
+
+  .drop-zone {
+    border: 1.5px dashed #cdd0d8;
+    border-radius: 8px;
+    background: #f8f9fb;
+    position: relative;
+    overflow: hidden;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .drop-zone:hover { background: #f0f4fb; border-color: #185fa5; }
+  .drop-zone.filled { border-style: solid; border-color: #185fa5; }
+
+  .drop-zone img { width: 100%; height: 100%; object-fit: cover; display: none; border-radius: 6px; }
+  .drop-zone.filled img { display: block; }
+
+  .zone-placeholder { display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none; }
+  .drop-zone.filled .zone-placeholder { display: none; }
+  .zone-placeholder i { font-size: 22px; color: #bbb; }
+  .zone-placeholder span { font-size: 11px; color: #bbb; text-align: center; }
+
+  .drop-zone input[type="file"] {
+    position: absolute; inset: 0; opacity: 0;
+    cursor: pointer; width: 100%; height: 100%;
+  }
+
+  .remove-btn {
+    display: none;
+    position: absolute; top: 5px; right: 5px;
+    background: rgba(0,0,0,0.5); border: none; border-radius: 50%;
+    width: 22px; height: 22px; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 5; padding: 0;
+  }
+  .drop-zone.filled .remove-btn { display: flex; }
+  .remove-btn i { font-size: 12px; color: #fff; }
+
+  /* Hidden file inputs for actual form submission */
+  .hidden-file { display: none; }
+
+  .notes-card {
+    background: #fff;
+    border: 1px solid #e2e4e9;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+  .notes-card textarea {
+    width: 100%; min-height: 84px;
+    font-size: 14px; color: #111;
+    border: 1px solid #d4d7de; border-radius: 8px;
+    padding: 10px 12px; resize: vertical; font-family: inherit;
+    outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .notes-card textarea:focus {
+    border-color: #185fa5;
+    box-shadow: 0 0 0 3px rgba(24,95,165,0.12);
+  }
+  .notes-card textarea::placeholder { color: #bbb; }
+
+  .submit-area { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  .submit-btn {
+    background: #185fa5; color: #fff; border: none;
+    border-radius: 9px; padding: 0 22px; height: 42px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.15s;
+  }
+  .submit-btn:hover { background: #0c447c; }
+  .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .recipient-note { font-size: 12px; color: #999; display: flex; align-items: center; gap: 5px; }
+  .recipient-note i { font-size: 14px; }
+
+  .toast {
+    margin-top: 16px; border-radius: 10px; padding: 12px 16px;
+    font-size: 13px; display: none; align-items: center; gap: 9px; line-height: 1.4;
+  }
+  .toast.show { display: flex; }
+  .toast.success { background: #eaf3de; border: 1px solid #639922; color: #3b6d11; }
+  .toast.warn { background: #faeeda; border: 1px solid #ba7517; color: #633806; }
+  .toast i { font-size: 19px; flex-shrink: 0; }
+
+  @media (max-width: 520px) {
+    .photo-grid { grid-template-columns: 1fr; }
+    .meta-grid { grid-template-columns: 1fr; }
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .spinning { animation: spin 0.8s linear infinite; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-icon"><i class="ti ti-truck"></i></div>
+    <div class="header-text">
+      <h1>Weekly Vehicle Inspection</h1>
+      <p>Complete this checklist before your work week begins. Add all 8 required photos and submit to the fleet team. Takes about 5 minutes.</p>
+    </div>
+  </div>
+</div>
+
+<div class="progress-strip">
+  <div class="progress-strip-inner">
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    <span class="progress-label" id="progress-label">0 of 9 photos added</span>
+  </div>
+</div>
+
+<div class="form-body">
+
+  <!-- Netlify Forms: data-netlify="true" enables automatic form handling -->
+  <form name="vehicle-inspection" method="POST" data-netlify="true" enctype="multipart/form-data" id="inspection-form" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="vehicle-inspection">
+    <p style="display:none"><input name="bot-field"></p>
+
+    <div class="meta-card">
+      <div class="meta-grid">
+        <div class="field">
+          <label for="emp-name">Your name <span class="req">*</span></label>
+          <input type="text" id="emp-name" name="employee-name" placeholder="First and last name" required="">
+        </div>
+        <div class="field">
+          <label for="vehicle-id">Vehicle / truck # <span class="req">*</span></label>
+          <input type="text" id="vehicle-id" name="vehicle-number" placeholder="e.g. T-14, VAN-03" required="">
+        </div>
+        <div class="field">
+          <label for="odo">Odometer reading <span class="req">*</span></label>
+          <input type="number" id="odo" name="odometer" placeholder="Miles" required="">
+        </div>
+        <div class="field">
+          <label for="insp-date">Inspection date <span class="req">*</span></label>
+          <input type="date" id="insp-date" name="inspection-date" required="">
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden actual file inputs for form submission -->
+    <input class="hidden-file" type="file" name="photo-tires-driver" id="real-file-0" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-tires-passenger" id="real-file-1" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-headlights" id="real-file-2" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-tail-lights" id="real-file-3" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-windshield" id="real-file-4" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-body-damage" id="real-file-5" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-fluids" id="real-file-6" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-interior" id="real-file-7" accept="image/*">
+    <input class="hidden-file" type="file" name="photo-registration-insurance" id="real-file-8" accept="image/*">
+
+    <p class="section-heading">Exterior</p>
+    <div class="photo-grid">
+
+      <div class="photo-card" id="card-0">
+        <div class="card-top">
+          <i class="ti ti-circle-dot"></i>
+          <span class="card-title">Tires — driver side</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Photo of both driver-side tires showing tread depth and sidewall. No bulges, cracking, or low pressure.</p>
+        <div class="drop-zone" id="zone-0">
+          <img id="img-0" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(0, this)" aria-label="Tires driver side">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,0)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-1">
+        <div class="card-top">
+          <i class="ti ti-circle-dot"></i>
+          <span class="card-title">Tires — passenger side</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Photo of both passenger-side tires. Check for even wear and adequate tread, including the rear tire.</p>
+        <div class="drop-zone" id="zone-1">
+          <img id="img-1" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(1, this)" aria-label="Tires passenger side">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,1)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-2">
+        <div class="card-top">
+          <i class="ti ti-bulb"></i>
+          <span class="card-title">Headlights &amp; front lights</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Front of vehicle with lights on — headlights and turn signals. All must be working and unobstructed.</p>
+        <div class="drop-zone" id="zone-2">
+          <img id="img-2" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(2, this)" aria-label="Headlights">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,2)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-3">
+        <div class="card-top">
+          <i class="ti ti-bulb"></i>
+          <span class="card-title">Tail lights &amp; brake lights</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Rear of vehicle with brake lights activated. Show both tail lights clearly and any reverse lights.</p>
+        <div class="drop-zone" id="zone-3">
+          <img id="img-3" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(3, this)" aria-label="Tail lights">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,3)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-4">
+        <div class="card-top">
+          <i class="ti ti-windmill"></i>
+          <span class="card-title">Windshield &amp; wipers</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Full windshield photo — no cracks, chips, or obstructions. Include wiper blades so their condition is visible.</p>
+        <div class="drop-zone" id="zone-4">
+          <img id="img-4" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(4, this)" aria-label="Windshield">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,4)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-5">
+        <div class="card-top">
+          <i class="ti ti-car-crash"></i>
+          <span class="card-title">Body damage check</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Walk-around photo showing all sides of the vehicle. If there is any new damage, capture a close-up of each area.</p>
+        <div class="drop-zone" id="zone-5">
+          <img id="img-5" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(5, this)" aria-label="Body damage">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,5)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-heading">Under the hood, interior &amp; documents</p>
+    <div class="photo-grid">
+
+      <div class="photo-card" id="card-6">
+        <div class="card-top">
+          <i class="ti ti-droplet"></i>
+          <span class="card-title">Fluid levels</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Photo of the oil dipstick pulled out and wiped, showing the current oil level. Level should be between the min and max marks.</p>
+        <div class="drop-zone" id="zone-6">
+          <img id="img-6" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(6, this)" aria-label="Fluid levels">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,6)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-7">
+        <div class="card-top">
+          <i class="ti ti-steering-wheel"></i>
+          <span class="card-title">Dashboard &amp; driver's seat</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Photo from the driver's seat showing the full dashboard — no warning or check engine lights illuminated. Seat and seatbelt should be in good condition.</p>
+        <div class="drop-zone" id="zone-7">
+          <img id="img-7" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(7, this)" aria-label="Dashboard and drivers seat">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,7)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <div class="photo-card" id="card-8">
+        <div class="card-top">
+          <i class="ti ti-file-certificate"></i>
+          <span class="card-title">Registration &amp; insurance</span>
+          <div class="status-dot"></div>
+        </div>
+        <p class="card-desc">Photo of the current vehicle registration and proof of insurance together. Both must be present in the vehicle and up to date.</p>
+        <div class="drop-zone" id="zone-8">
+          <img id="img-8" alt="">
+          <div class="zone-placeholder">
+            <i class="ti ti-camera-plus"></i>
+            <span>Tap to upload or take photo</span>
+          </div>
+          <input type="file" accept="image/*" capture="environment" onchange="handleFile(8, this)" aria-label="Registration and insurance">
+          <button type="button" class="remove-btn" onclick="removePhoto(event,8)" aria-label="Remove photo"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-heading">Additional notes</p>
+    <div class="notes-card">
+      <textarea name="notes" id="notes" placeholder="Any concerns, damage, or maintenance issues to flag? Leave blank if all clear."></textarea>
+    </div>
+
+    <div class="submit-area">
+      <button type="button" class="submit-btn" id="submit-btn" onclick="validateAndSubmit()">
+        <i class="ti ti-send"></i>
+        Submit to fleet team
+      </button>
+      <span class="recipient-note">
+        <i class="ti ti-lock"></i>
+        Sent to pvanwynen@toptiersolarsolutions.com
+      </span>
+    </div>
+
+    <div class="toast" id="toast" role="alert">
+      <i class="ti ti-circle-check" id="toast-icon"></i>
+      <span id="toast-msg"></span>
+    </div>
+
+  </form>
+</div>
+
+<script>
+const photos = {};
+const TOTAL = 9;
+
+function handleFile(i, visualInput) {
+  const file = visualInput.files[0];
+  if (!file) return;
+
+  // Transfer to the real named input for form submission
+  const dt = new DataTransfer();
+  dt.items.add(file);
+  document.getElementById('real-file-' + i).files = dt.files;
+
+  // Show preview
+  const reader = new FileReader();
+  reader.onload = e => {
+    photos[i] = { name: file.name };
+    document.getElementById('img-' + i).src = e.target.result;
+    document.getElementById('zone-' + i).classList.add('filled');
+    document.getElementById('card-' + i).classList.add('has-photo');
+    updateProgress();
+  };
+  reader.readAsDataURL(file);
+}
+
+function removePhoto(e, i) {
+  e.stopPropagation();
+  delete photos[i];
+  document.getElementById('img-' + i).src = '';
+  document.getElementById('zone-' + i).classList.remove('filled');
+  document.getElementById('card-' + i).classList.remove('has-photo');
+  document.getElementById('zone-' + i).querySelector('input[type=file]').value = '';
+  document.getElementById('real-file-' + i).value = '';
+  updateProgress();
+}
+
+function updateProgress() {
+  const n = Object.keys(photos).length;
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL * 100) + '%';
+  document.getElementById('progress-label').textContent = n + ' of ' + TOTAL + ' photos added';
+}
+
+function showToast(msg, type) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  document.getElementById('toast-icon').className = type === 'warn' ? 'ti ti-alert-triangle' : 'ti ti-circle-check';
+  toast.className = 'toast show ' + type;
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), 7000);
+}
+
+function validateAndSubmit() {
+  const name = document.getElementById('emp-name').value.trim();
+  const vehicle = document.getElementById('vehicle-id').value.trim();
+  const odo = document.getElementById('odo').value.trim();
+  const date = document.getElementById('insp-date').value;
+  const count = Object.keys(photos).length;
+
+  if (!name || !vehicle || !odo || !date) {
+    showToast('Please fill in your name, vehicle #, odometer, and date before submitting.', 'warn');
+    return;
+  }
+  if (count < TOTAL) {
+    showToast('Please add all 8 photos before submitting. You have ' + count + ' of 8.', 'warn');
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> Submitting…';
+
+  document.getElementById('inspection-form').submit();
+}
+
+document.getElementById('insp-date').valueAsDate = new Date();
+</script>
+
+
+</body></html>
