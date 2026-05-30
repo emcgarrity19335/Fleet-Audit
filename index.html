@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify_5.html -->
+<!-- saved from url=(0075)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify_6.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -292,6 +292,25 @@
   const db = getFirestore(app);
   const storage = getStorage(app);
 
+  // Compress image to max 1200px wide, 0.75 quality JPEG — massively reduces upload size
+  function compressImage(file) {
+    return new Promise(resolve => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        const MAX = 1200;
+        let w = img.width, h = img.height;
+        if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        canvas.toBlob(blob => resolve(blob), 'image/jpeg', 0.75);
+      };
+      img.src = url;
+    });
+  }
+
   // Expose submit function to global scope
   window._firebaseSubmit = async function(formData, photosBySection) {
     const SECTION_NAMES = [
@@ -308,27 +327,44 @@
       if (text) document.getElementById('upload-status-text').textContent = text;
     };
 
-    // Upload all photos to Firebase Storage
+    // Compress all photos first in parallel
+    setProgress(0, 'Compressing photos...');
+    const compressedBySection = await Promise.all(
+      photosBySection.map(sectionFiles =>
+        Promise.all(sectionFiles.map(file => compressImage(file)))
+      )
+    );
+
+    // Upload all photos in parallel
+    setProgress(10, 'Uploading photos...');
     const submissionId = Date.now().toString();
     const photoURLs = {};
 
-    for (let s = 0; s < photosBySection.length; s++) {
-      const sectionFiles = photosBySection[s];
+    const uploadTasks = [];
+    for (let s = 0; s < compressedBySection.length; s++) {
       photoURLs[SECTION_NAMES[s]] = [];
-      for (let p = 0; p < sectionFiles.length; p++) {
-        const file = sectionFiles[p];
-        const path = `inspections/${submissionId}/${SECTION_NAMES[s]}_${p + 1}`;
-        const storageRef = ref(storage, path);
-        await uploadBytes(storageRef, file);
-        const url = await getDownloadURL(storageRef);
-        photoURLs[SECTION_NAMES[s]].push(url);
-        uploaded++;
-        const pct = Math.round((uploaded / totalPhotos) * 85);
-        setProgress(pct, `Uploading photo ${uploaded} of ${totalPhotos}...`);
+      for (let p = 0; p < compressedBySection[s].length; p++) {
+        uploadTasks.push({ s, p, blob: compressedBySection[s][p] });
       }
     }
 
-    setProgress(90, 'Saving submission...');
+    // Upload in batches of 4 at a time
+    const BATCH = 4;
+    for (let i = 0; i < uploadTasks.length; i += BATCH) {
+      const batch = uploadTasks.slice(i, i + BATCH);
+      await Promise.all(batch.map(async ({ s, p, blob }) => {
+        const path = `inspections/${submissionId}/${SECTION_NAMES[s]}_${p + 1}`;
+        const storageRef = ref(storage, path);
+        await uploadBytes(storageRef, blob, { contentType: 'image/jpeg' });
+        const url = await getDownloadURL(storageRef);
+        photoURLs[SECTION_NAMES[s]].push(url);
+        uploaded++;
+        const pct = 10 + Math.round((uploaded / totalPhotos) * 80);
+        setProgress(pct, `Uploading photo ${uploaded} of ${totalPhotos}...`);
+      }));
+    }
+
+    setProgress(92, 'Saving submission...');
 
     // Save record to Firestore
     await addDoc(collection(db, 'inspections'), {
