@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify_4.html -->
+<!-- saved from url=(0075)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify_5.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +7,11 @@
 <link rel="stylesheet" href="./index_files/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #f4f5f7; color: #1a1a1a; min-height: 100vh;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f5f7; color: #1a1a1a; min-height: 100vh; }
 
   .page-header { background: #fff; border-bottom: 1px solid #e2e4e9; }
-  .header-inner {
-    max-width: 720px; margin: 0 auto; padding: 24px 24px 20px;
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .header-icon {
-    width: 48px; height: 48px; background: #e6f1fb; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
-  }
+  .header-inner { max-width: 720px; margin: 0 auto; padding: 24px 24px 20px; display: flex; align-items: flex-start; gap: 16px; }
+  .header-icon { width: 48px; height: 48px; background: #e6f1fb; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
   .header-icon i { font-size: 24px; color: #185fa5; }
   .header-text h1 { font-size: 20px; font-weight: 600; color: #111; margin-bottom: 4px; }
   .header-text p { font-size: 13px; color: #666; line-height: 1.5; }
@@ -36,173 +26,116 @@
 
   .meta-card { background: #fff; border: 1px solid #e2e4e9; border-radius: 12px; padding: 20px; margin-bottom: 28px; }
   .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .field label {
-    display: block; font-size: 11px; font-weight: 600; color: #888;
-    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
-  }
+  .field label { display: block; font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
   .field label .req { color: #d85a30; }
-  .field input {
-    width: 100%; height: 38px; padding: 0 12px;
-    border: 1px solid #d4d7de; border-radius: 8px;
-    font-size: 14px; color: #111; background: #fff;
-    outline: none; transition: border-color 0.15s, box-shadow 0.15s;
-  }
+  .field input { width: 100%; height: 38px; padding: 0 12px; border: 1px solid #d4d7de; border-radius: 8px; font-size: 14px; color: #111; background: #fff; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
   .field input:focus { border-color: #185fa5; box-shadow: 0 0 0 3px rgba(24,95,165,0.12); }
 
-  .section-heading {
-    font-size: 11px; font-weight: 600; color: #aaa;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #e8eaed;
-  }
+  .section-heading { font-size: 11px; font-weight: 600; color: #aaa; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #e8eaed; }
 
   .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px; }
 
   .photo-card { background: #fff; border: 1px solid #e2e4e9; border-radius: 12px; padding: 14px; transition: border-color 0.2s; }
   .photo-card.has-photo { border-color: #185fa5; }
-
   .card-top { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
   .card-top > i { font-size: 17px; color: #185fa5; }
   .card-title { font-size: 13px; font-weight: 600; color: #111; flex: 1; }
   .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; flex-shrink: 0; transition: background 0.2s; }
   .photo-card.has-photo .status-dot { background: #1d9e75; }
-
   .card-desc { font-size: 12px; color: #777; line-height: 1.5; margin-bottom: 10px; }
 
-  /* Preview grid — shows up to 4 thumbnails */
-  .preview-grid {
-    display: none;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    margin-bottom: 8px;
-  }
+  .preview-grid { display: none; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 8px; }
   .preview-grid.has-items { display: grid; }
-
-  .thumb-wrap {
-    position: relative; border-radius: 6px; overflow: hidden;
-    aspect-ratio: 1; background: #e8eaed;
-  }
+  .thumb-wrap { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 1; background: #e8eaed; }
   .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .thumb-remove {
-    position: absolute; top: 2px; right: 2px;
-    background: rgba(0,0,0,0.55); border: none; border-radius: 50%;
-    width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; padding: 0; z-index: 3;
-  }
+  .thumb-remove { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.55); border: none; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; z-index: 3; }
   .thumb-remove i { font-size: 10px; color: #fff; }
 
-  /* Add-more row — shown when < 4 photos */
   .add-row { display: flex; gap: 8px; }
   .add-row.hidden { display: none; }
 
-  .zone-btn {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; gap: 5px; flex: 1;
-    padding: 10px 6px; border-radius: 8px;
-    border: 1px solid #e2e4e9; background: #f8f9fb;
-    cursor: pointer; position: relative; overflow: hidden;
-    transition: background 0.15s, border-color 0.15s; min-height: 60px;
-  }
+  .zone-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex: 1; padding: 10px 6px; border-radius: 8px; border: 1px solid #e2e4e9; background: #f8f9fb; cursor: pointer; position: relative; overflow: hidden; transition: background 0.15s, border-color 0.15s; min-height: 60px; }
   .zone-btn:hover { background: #f0f4fb; border-color: #185fa5; }
   .zone-btn i { font-size: 20px; color: #185fa5; pointer-events: none; }
   .zone-btn span { font-size: 11px; color: #555; pointer-events: none; white-space: nowrap; }
-  .zone-btn input[type="file"] {
-    position: absolute; inset: 0; opacity: 0;
-    cursor: pointer; width: 100%; height: 100%; font-size: 0;
-  }
+  .zone-btn input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; font-size: 0; }
 
   .photo-count-label { font-size: 11px; color: #aaa; margin-bottom: 6px; display: none; }
   .photo-card.has-photo .photo-count-label { display: block; }
 
-  .hidden-file { display: none; }
-
   .notes-card { background: #fff; border: 1px solid #e2e4e9; border-radius: 12px; padding: 16px; margin-bottom: 24px; }
-  .notes-card textarea {
-    width: 100%; min-height: 84px; font-size: 14px; color: #111;
-    border: 1px solid #d4d7de; border-radius: 8px;
-    padding: 10px 12px; resize: vertical; font-family: inherit;
-    outline: none; transition: border-color 0.15s, box-shadow 0.15s;
-  }
+  .notes-card textarea { width: 100%; min-height: 84px; font-size: 14px; color: #111; border: 1px solid #d4d7de; border-radius: 8px; padding: 10px 12px; resize: vertical; font-family: inherit; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
   .notes-card textarea:focus { border-color: #185fa5; box-shadow: 0 0 0 3px rgba(24,95,165,0.12); }
   .notes-card textarea::placeholder { color: #bbb; }
 
   .submit-area { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .submit-btn {
-    background: #185fa5; color: #fff; border: none;
-    border-radius: 9px; padding: 0 22px; height: 42px;
-    font-size: 14px; font-weight: 600; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s;
-  }
+  .submit-btn { background: #185fa5; color: #fff; border: none; border-radius: 9px; padding: 0 22px; height: 42px; font-size: 14px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; }
   .submit-btn:hover { background: #0c447c; }
   .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
   .recipient-note { font-size: 12px; color: #999; display: flex; align-items: center; gap: 5px; }
   .recipient-note i { font-size: 14px; }
 
-  .toast {
-    margin-top: 16px; border-radius: 10px; padding: 12px 16px;
-    font-size: 13px; display: none; align-items: center; gap: 9px; line-height: 1.4;
-  }
+  .toast { margin-top: 16px; border-radius: 10px; padding: 12px 16px; font-size: 13px; display: none; align-items: center; gap: 9px; line-height: 1.4; }
   .toast.show { display: flex; }
   .toast.success { background: #eaf3de; border: 1px solid #639922; color: #3b6d11; }
   .toast.warn { background: #faeeda; border: 1px solid #ba7517; color: #633806; }
+  .toast.error { background: #fcebeb; border: 1px solid #a32d2d; color: #791f1f; }
   .toast i { font-size: 19px; flex-shrink: 0; }
 
-  @media (max-width: 520px) {
-    .photo-grid { grid-template-columns: 1fr; }
-    .meta-grid { grid-template-columns: 1fr; }
-  }
+  /* Upload progress overlay */
+  .upload-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100; align-items: center; justify-content: center; }
+  .upload-overlay.show { display: flex; }
+  .upload-box { background: #fff; border-radius: 16px; padding: 32px 40px; text-align: center; min-width: 280px; }
+  .upload-box h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #111; }
+  .upload-box p { font-size: 13px; color: #666; margin-bottom: 20px; }
+  .upload-progress-bg { height: 6px; background: #e8eaed; border-radius: 99px; overflow: hidden; }
+  .upload-progress-fill { height: 100%; background: #185fa5; border-radius: 99px; transition: width 0.2s; width: 0%; }
+  .upload-progress-label { font-size: 12px; color: #888; margin-top: 8px; }
 
+  /* Success screen */
+  .success-screen { display: none; max-width: 720px; margin: 60px auto; padding: 0 24px; text-align: center; }
+  .success-screen.show { display: block; }
+  .success-icon { width: 64px; height: 64px; background: #eaf3de; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .success-icon i { font-size: 32px; color: #1d9e75; }
+  .success-screen h2 { font-size: 22px; font-weight: 600; color: #111; margin-bottom: 8px; }
+  .success-screen p { font-size: 14px; color: #666; line-height: 1.6; }
+  .success-screen .new-btn { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; background: #185fa5; color: #fff; border: none; border-radius: 9px; padding: 0 22px; height: 42px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+  @media (max-width: 520px) { .photo-grid { grid-template-columns: 1fr; } .meta-grid { grid-template-columns: 1fr; } }
   @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   .spinning { animation: spin 0.8s linear infinite; }
 </style>
 </head>
 <body>
 
-<div class="page-header">
-  <div class="header-inner">
-    <div class="header-icon"><i class="ti ti-truck"></i></div>
-    <div class="header-text">
-      <h1>Weekly Vehicle Inspection</h1>
-      <p>Complete this checklist before your work week begins. Add at least 1 photo per section (up to 4) and submit to the fleet team. Takes about 5 minutes.</p>
-    </div>
-  </div>
-</div>
-
-<div class="progress-strip">
-  <div class="progress-strip-inner">
-    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
-    <span class="progress-label" id="progress-label">0 of 9 sections complete</span>
-  </div>
-</div>
-
-<div class="form-body">
-  <form name="vehicle-inspection" method="POST" data-netlify="true" enctype="multipart/form-data" id="inspection-form" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="vehicle-inspection">
-    <p style="display:none"><input name="bot-field"></p>
-
-    <div class="meta-card">
-      <div class="meta-grid">
-        <div class="field">
-          <label for="emp-name">Your name <span class="req">*</span></label>
-          <input type="text" id="emp-name" name="employee-name" placeholder="First and last name" required="">
-        </div>
-        <div class="field">
-          <label for="vehicle-id">Vehicle / truck # <span class="req">*</span></label>
-          <input type="text" id="vehicle-id" name="vehicle-number" placeholder="e.g. T-14, VAN-03" required="">
-        </div>
-        <div class="field">
-          <label for="odo">Odometer reading <span class="req">*</span></label>
-          <input type="number" id="odo" name="odometer" placeholder="Miles" required="">
-        </div>
-        <div class="field">
-          <label for="insp-date">Inspection date <span class="req">*</span></label>
-          <input type="date" id="insp-date" name="inspection-date" required="">
-        </div>
+<div id="main-form">
+  <div class="page-header">
+    <div class="header-inner">
+      <div class="header-icon"><i class="ti ti-truck"></i></div>
+      <div class="header-text">
+        <h1>Weekly Vehicle Inspection</h1>
+        <p>Complete this checklist before your work week begins. Add at least 1 photo per section (up to 4) and submit to the fleet team.</p>
       </div>
     </div>
+  </div>
 
-    <!-- Hidden named file inputs (4 slots per section × 9 sections) -->
-    <div id="hidden-inputs"><input type="file" name="photo-tires-driver-1" id="real-0-0" accept="image/*" style="display: none;"><input type="file" name="photo-tires-driver-2" id="real-0-1" accept="image/*" style="display: none;"><input type="file" name="photo-tires-driver-3" id="real-0-2" accept="image/*" style="display: none;"><input type="file" name="photo-tires-driver-4" id="real-0-3" accept="image/*" style="display: none;"><input type="file" name="photo-tires-passenger-1" id="real-1-0" accept="image/*" style="display: none;"><input type="file" name="photo-tires-passenger-2" id="real-1-1" accept="image/*" style="display: none;"><input type="file" name="photo-tires-passenger-3" id="real-1-2" accept="image/*" style="display: none;"><input type="file" name="photo-tires-passenger-4" id="real-1-3" accept="image/*" style="display: none;"><input type="file" name="photo-headlights-1" id="real-2-0" accept="image/*" style="display: none;"><input type="file" name="photo-headlights-2" id="real-2-1" accept="image/*" style="display: none;"><input type="file" name="photo-headlights-3" id="real-2-2" accept="image/*" style="display: none;"><input type="file" name="photo-headlights-4" id="real-2-3" accept="image/*" style="display: none;"><input type="file" name="photo-tail-lights-1" id="real-3-0" accept="image/*" style="display: none;"><input type="file" name="photo-tail-lights-2" id="real-3-1" accept="image/*" style="display: none;"><input type="file" name="photo-tail-lights-3" id="real-3-2" accept="image/*" style="display: none;"><input type="file" name="photo-tail-lights-4" id="real-3-3" accept="image/*" style="display: none;"><input type="file" name="photo-windshield-1" id="real-4-0" accept="image/*" style="display: none;"><input type="file" name="photo-windshield-2" id="real-4-1" accept="image/*" style="display: none;"><input type="file" name="photo-windshield-3" id="real-4-2" accept="image/*" style="display: none;"><input type="file" name="photo-windshield-4" id="real-4-3" accept="image/*" style="display: none;"><input type="file" name="photo-body-damage-1" id="real-5-0" accept="image/*" style="display: none;"><input type="file" name="photo-body-damage-2" id="real-5-1" accept="image/*" style="display: none;"><input type="file" name="photo-body-damage-3" id="real-5-2" accept="image/*" style="display: none;"><input type="file" name="photo-body-damage-4" id="real-5-3" accept="image/*" style="display: none;"><input type="file" name="photo-fluids-1" id="real-6-0" accept="image/*" style="display: none;"><input type="file" name="photo-fluids-2" id="real-6-1" accept="image/*" style="display: none;"><input type="file" name="photo-fluids-3" id="real-6-2" accept="image/*" style="display: none;"><input type="file" name="photo-fluids-4" id="real-6-3" accept="image/*" style="display: none;"><input type="file" name="photo-dashboard-1" id="real-7-0" accept="image/*" style="display: none;"><input type="file" name="photo-dashboard-2" id="real-7-1" accept="image/*" style="display: none;"><input type="file" name="photo-dashboard-3" id="real-7-2" accept="image/*" style="display: none;"><input type="file" name="photo-dashboard-4" id="real-7-3" accept="image/*" style="display: none;"><input type="file" name="photo-registration-1" id="real-8-0" accept="image/*" style="display: none;"><input type="file" name="photo-registration-2" id="real-8-1" accept="image/*" style="display: none;"><input type="file" name="photo-registration-3" id="real-8-2" accept="image/*" style="display: none;"><input type="file" name="photo-registration-4" id="real-8-3" accept="image/*" style="display: none;"></div>
+  <div class="progress-strip">
+    <div class="progress-strip-inner">
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      <span class="progress-label" id="progress-label">0 of 9 sections complete</span>
+    </div>
+  </div>
+
+  <div class="form-body">
+    <div class="meta-card">
+      <div class="meta-grid">
+        <div class="field"><label for="emp-name">Your name <span class="req">*</span></label><input type="text" id="emp-name" placeholder="First and last name"></div>
+        <div class="field"><label for="vehicle-id">Vehicle / truck # <span class="req">*</span></label><input type="text" id="vehicle-id" placeholder="e.g. T-14, VAN-03"></div>
+        <div class="field"><label for="odo">Odometer reading <span class="req">*</span></label><input type="number" id="odo" placeholder="Miles"></div>
+        <div class="field"><label for="insp-date">Inspection date <span class="req">*</span></label><input type="date" id="insp-date"></div>
+      </div>
+    </div>
 
     <p class="section-heading">Exterior</p>
     <div class="photo-grid">
@@ -216,7 +149,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(0,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-1">
         <div class="card-top"><i class="ti ti-circle-dot"></i><span class="card-title">Tires — passenger side</span><div class="status-dot"></div></div>
         <p class="card-desc">Both passenger-side tires. Check for even wear and adequate tread, including the rear tire.</p>
@@ -227,7 +159,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(1,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-2">
         <div class="card-top"><i class="ti ti-bulb"></i><span class="card-title">Headlights &amp; front lights</span><div class="status-dot"></div></div>
         <p class="card-desc">Front of vehicle with lights on — headlights and turn signals. All must be working and unobstructed.</p>
@@ -238,7 +169,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(2,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-3">
         <div class="card-top"><i class="ti ti-bulb"></i><span class="card-title">Tail lights &amp; brake lights</span><div class="status-dot"></div></div>
         <p class="card-desc">Rear of vehicle with brake lights activated. Show both tail lights clearly and any reverse lights.</p>
@@ -249,7 +179,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(3,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-4">
         <div class="card-top"><i class="ti ti-windmill"></i><span class="card-title">Windshield &amp; wipers</span><div class="status-dot"></div></div>
         <p class="card-desc">Full windshield — no cracks, chips, or obstructions. Include wiper blades so their condition is visible.</p>
@@ -260,7 +189,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(4,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-5">
         <div class="card-top"><i class="ti ti-car-crash"></i><span class="card-title">Body damage check</span><div class="status-dot"></div></div>
         <p class="card-desc">Walk-around photo showing all sides of the vehicle. Capture a close-up of any new damage.</p>
@@ -285,7 +213,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(6,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-7">
         <div class="card-top"><i class="ti ti-steering-wheel"></i><span class="card-title">Dashboard &amp; driver's seat</span><div class="status-dot"></div></div>
         <p class="card-desc">Full dashboard — no warning or check engine lights on. Seat and seatbelt in good condition.</p>
@@ -296,7 +223,6 @@
           <button type="button" class="zone-btn"><i class="ti ti-photo"></i><span>Choose photo</span><input type="file" accept="image/*" multiple="" onchange="handleFile(7,this)"></button>
         </div>
       </div>
-
       <div class="photo-card" id="card-8">
         <div class="card-top"><i class="ti ti-file-certificate"></i><span class="card-title">Registration &amp; insurance</span><div class="status-dot"></div></div>
         <p class="card-desc">Current vehicle registration and proof of insurance together. Both must be present and up to date.</p>
@@ -311,93 +237,136 @@
 
     <p class="section-heading">Additional notes</p>
     <div class="notes-card">
-      <textarea name="notes" id="notes" placeholder="Any concerns, damage, or maintenance issues to flag? Leave blank if all clear."></textarea>
+      <textarea id="notes" placeholder="Any concerns, damage, or maintenance issues to flag? Leave blank if all clear."></textarea>
     </div>
 
     <div class="submit-area">
       <button type="button" class="submit-btn" id="submit-btn" onclick="validateAndSubmit()">
-        <i class="ti ti-send"></i>
-        Submit to fleet team
+        <i class="ti ti-send"></i>Submit to fleet team
       </button>
-      <span class="recipient-note">
-        <i class="ti ti-lock"></i>
-        Sent to pvanwynen@toptiersolarsolutions.com
-      </span>
+      <span class="recipient-note"><i class="ti ti-lock"></i>Submitted securely via Firebase</span>
     </div>
 
     <div class="toast" id="toast" role="alert">
       <i id="toast-icon" class="ti ti-circle-check"></i>
       <span id="toast-msg"></span>
     </div>
-  </form>
+  </div>
 </div>
+
+<!-- Upload progress overlay -->
+<div class="upload-overlay" id="upload-overlay">
+  <div class="upload-box">
+    <h3>Submitting inspection</h3>
+    <p id="upload-status-text">Uploading photos...</p>
+    <div class="upload-progress-bg"><div class="upload-progress-fill" id="upload-progress-fill"></div></div>
+    <div class="upload-progress-label" id="upload-progress-label">0%</div>
+  </div>
+</div>
+
+<!-- Success screen -->
+<div class="success-screen" id="success-screen">
+  <div class="success-icon"><i class="ti ti-circle-check"></i></div>
+  <h2>Inspection submitted!</h2>
+  <p id="success-msg">Your weekly vehicle inspection has been received by the fleet team.</p>
+  <button class="new-btn" onclick="resetForm()"><i class="ti ti-refresh"></i>Submit another inspection</button>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDURabMhloljTloWB7w7opbOgqAILMsDvQ",
+    authDomain: "top-tier-fleet-inspection.firebaseapp.com",
+    projectId: "top-tier-fleet-inspection",
+    storageBucket: "top-tier-fleet-inspection.firebasestorage.app",
+    messagingSenderId: "870715167386",
+    appId: "1:870715167386:web:f3658b13f1d4f391a8c523",
+    measurementId: "G-073ZLP6L87"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
+  // Expose submit function to global scope
+  window._firebaseSubmit = async function(formData, photosBySection) {
+    const SECTION_NAMES = [
+      'tires-driver', 'tires-passenger', 'headlights', 'tail-lights',
+      'windshield', 'body-damage', 'fluids', 'dashboard', 'registration'
+    ];
+
+    const totalPhotos = photosBySection.reduce((sum, arr) => sum + arr.length, 0);
+    let uploaded = 0;
+
+    const setProgress = (pct, text) => {
+      document.getElementById('upload-progress-fill').style.width = pct + '%';
+      document.getElementById('upload-progress-label').textContent = pct + '%';
+      if (text) document.getElementById('upload-status-text').textContent = text;
+    };
+
+    // Upload all photos to Firebase Storage
+    const submissionId = Date.now().toString();
+    const photoURLs = {};
+
+    for (let s = 0; s < photosBySection.length; s++) {
+      const sectionFiles = photosBySection[s];
+      photoURLs[SECTION_NAMES[s]] = [];
+      for (let p = 0; p < sectionFiles.length; p++) {
+        const file = sectionFiles[p];
+        const path = `inspections/${submissionId}/${SECTION_NAMES[s]}_${p + 1}`;
+        const storageRef = ref(storage, path);
+        await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(storageRef);
+        photoURLs[SECTION_NAMES[s]].push(url);
+        uploaded++;
+        const pct = Math.round((uploaded / totalPhotos) * 85);
+        setProgress(pct, `Uploading photo ${uploaded} of ${totalPhotos}...`);
+      }
+    }
+
+    setProgress(90, 'Saving submission...');
+
+    // Save record to Firestore
+    await addDoc(collection(db, 'inspections'), {
+      submissionId,
+      employeeName: formData.name,
+      vehicleNumber: formData.vehicle,
+      odometer: formData.odometer,
+      inspectionDate: formData.date,
+      notes: formData.notes || '',
+      photos: photoURLs,
+      submittedAt: serverTimestamp()
+    });
+
+    setProgress(100, 'Done!');
+  };
+</script>
 
 <script>
 const SECTIONS = 9;
 const MAX_PER_SECTION = 4;
-
-// photos[sectionIndex] = array of { file, dataUrl }
 const photos = Array.from({ length: SECTIONS }, () => []);
-
-const SECTION_NAMES = [
-  'tires-driver', 'tires-passenger', 'headlights', 'tail-lights',
-  'windshield', 'body-damage', 'fluids', 'dashboard', 'registration'
-];
-
-// Build hidden file inputs — 4 slots per section
-(function buildHiddenInputs() {
-  const container = document.getElementById('hidden-inputs');
-  for (let s = 0; s < SECTIONS; s++) {
-    for (let p = 0; p < MAX_PER_SECTION; p++) {
-      const inp = document.createElement('input');
-      inp.type = 'file';
-      inp.name = 'photo-' + SECTION_NAMES[s] + '-' + (p + 1);
-      inp.id = 'real-' + s + '-' + p;
-      inp.accept = 'image/*';
-      inp.style.display = 'none';
-      container.appendChild(inp);
-    }
-  }
-})();
 
 function handleFile(sectionIdx, visualInput) {
   const arr = photos[sectionIdx];
   const files = Array.from(visualInput.files).slice(0, MAX_PER_SECTION - arr.length);
   if (!files.length) return;
-
   files.forEach(file => {
     const slot = arr.length;
     arr.push({ file, dataUrl: null });
-
-    const dt = new DataTransfer();
-    dt.items.add(file);
-    document.getElementById('real-' + sectionIdx + '-' + slot).files = dt.files;
-
     const reader = new FileReader();
-    reader.onload = e => {
-      arr[slot].dataUrl = e.target.result;
-      renderSection(sectionIdx);
-    };
+    reader.onload = e => { arr[slot].dataUrl = e.target.result; renderSection(sectionIdx); };
     reader.readAsDataURL(file);
   });
-
   visualInput.value = '';
 }
 
 function removePhoto(sectionIdx, slotIdx) {
   photos[sectionIdx].splice(slotIdx, 1);
-
-  // Rebuild hidden inputs for this section
-  photos[sectionIdx].forEach((p, i) => {
-    const dt = new DataTransfer();
-    dt.items.add(p.file);
-    document.getElementById('real-' + sectionIdx + '-' + i).files = dt.files;
-  });
-  // Clear any now-unused slots
-  for (let i = photos[sectionIdx].length; i < MAX_PER_SECTION; i++) {
-    document.getElementById('real-' + sectionIdx + '-' + i).value = '';
-  }
-
   renderSection(sectionIdx);
 }
 
@@ -409,39 +378,28 @@ function renderSection(s) {
   const addRow = document.getElementById('add-row-' + s);
   const countLabel = document.getElementById('count-label-' + s);
 
-  // Card border
   card.classList.toggle('has-photo', count > 0);
-
-  // Count label
   countLabel.textContent = count + ' of ' + MAX_PER_SECTION + ' photos added';
 
-  // Rebuild previews
   previewGrid.innerHTML = '';
   arr.forEach((p, i) => {
     const wrap = document.createElement('div');
     wrap.className = 'thumb-wrap';
-
     const img = document.createElement('img');
     img.src = p.dataUrl;
     img.alt = '';
-
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'thumb-remove';
-    btn.setAttribute('aria-label', 'Remove photo');
     btn.innerHTML = '<i class="ti ti-x"></i>';
     btn.onclick = () => removePhoto(s, i);
-
     wrap.appendChild(img);
     wrap.appendChild(btn);
     previewGrid.appendChild(wrap);
   });
 
   previewGrid.classList.toggle('has-items', count > 0);
-
-  // Hide add-row when at max
   addRow.classList.toggle('hidden', count >= MAX_PER_SECTION);
-
   updateProgress();
 }
 
@@ -454,33 +412,69 @@ function updateProgress() {
 function showToast(msg, type) {
   const toast = document.getElementById('toast');
   document.getElementById('toast-msg').textContent = msg;
-  document.getElementById('toast-icon').className = type === 'warn' ? 'ti ti-alert-triangle' : 'ti ti-circle-check';
+  const icons = { warn: 'ti-alert-triangle', error: 'ti-alert-circle', success: 'ti-circle-check' };
+  document.getElementById('toast-icon').className = 'ti ' + (icons[type] || 'ti-circle-check');
   toast.className = 'toast show ' + type;
   clearTimeout(toast._t);
   toast._t = setTimeout(() => toast.classList.remove('show'), 7000);
 }
 
-function validateAndSubmit() {
+async function validateAndSubmit() {
   const name = document.getElementById('emp-name').value.trim();
   const vehicle = document.getElementById('vehicle-id').value.trim();
   const odo = document.getElementById('odo').value.trim();
   const date = document.getElementById('insp-date').value;
+  const notes = document.getElementById('notes').value.trim();
 
   if (!name || !vehicle || !odo || !date) {
     showToast('Please fill in your name, vehicle #, odometer, and date before submitting.', 'warn');
     return;
   }
-
   const emptySections = photos.map((arr, i) => i).filter(i => photos[i].length === 0);
   if (emptySections.length > 0) {
-    showToast('Please add at least 1 photo to every section before submitting. ' + emptySections.length + ' section(s) still need a photo.', 'warn');
+    showToast('Please add at least 1 photo to every section. ' + emptySections.length + ' section(s) still need a photo.', 'warn');
     return;
   }
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> Submitting\u2026';
-  document.getElementById('inspection-form').submit();
+
+  // Show overlay
+  document.getElementById('upload-overlay').classList.add('show');
+  document.getElementById('upload-progress-fill').style.width = '0%';
+
+  try {
+    await window._firebaseSubmit(
+      { name, vehicle, odometer: odo, date, notes },
+      photos.map(arr => arr.map(p => p.file))
+    );
+
+    // Hide overlay, show success
+    document.getElementById('upload-overlay').classList.remove('show');
+    document.getElementById('main-form').style.display = 'none';
+    const successScreen = document.getElementById('success-screen');
+    successScreen.classList.add('show');
+    document.getElementById('success-msg').textContent =
+      `Inspection for ${vehicle} by ${name} has been received by the fleet team.`;
+
+  } catch (err) {
+    document.getElementById('upload-overlay').classList.remove('show');
+    btn.disabled = false;
+    showToast('Submission failed: ' + err.message + '. Please try again.', 'error');
+    console.error(err);
+  }
+}
+
+function resetForm() {
+  document.getElementById('main-form').style.display = '';
+  document.getElementById('success-screen').classList.remove('show');
+  document.getElementById('emp-name').value = '';
+  document.getElementById('vehicle-id').value = '';
+  document.getElementById('odo').value = '';
+  document.getElementById('insp-date').valueAsDate = new Date();
+  document.getElementById('notes').value = '';
+  photos.forEach((arr, i) => { arr.length = 0; renderSection(i); });
+  document.getElementById('submit-btn').disabled = false;
 }
 
 document.getElementById('insp-date').valueAsDate = new Date();
