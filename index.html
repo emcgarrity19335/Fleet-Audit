@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify_6.html -->
+<!-- saved from url=(0075)file:///C:/Users/Evan%20McGarrity/Downloads/fleet_inspection_netlify_7.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -272,6 +272,21 @@
   <button class="new-btn" onclick="resetForm()"><i class="ti ti-refresh"></i>Submit another inspection</button>
 </div>
 
+<!-- EmailJS SDK -->
+<script src="./index_files/email.min.js.download"></script>
+<script>
+  emailjs.init({ publicKey: '25mHItRDdjxLWCHed' });
+  window._sendEmail = function(formData) {
+    return emailjs.send('service_035vp0w', 'fjrp0a4', {
+      employee_name: formData.name,
+      vehicle_number: formData.vehicle,
+      odometer: formData.odometer,
+      inspection_date: formData.date,
+      notes: formData.notes || 'None'
+    });
+  };
+</script>
+
 <!-- Firebase SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -377,6 +392,15 @@
       photos: photoURLs,
       submittedAt: serverTimestamp()
     });
+
+    // Send email notification
+    setProgress(96, 'Sending email notification...');
+    try {
+      await window._sendEmail(formData);
+    } catch(e) {
+      console.warn('Email notification failed:', e);
+      // Don't block submission if email fails
+    }
 
     setProgress(100, 'Done!');
   };
